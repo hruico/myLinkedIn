@@ -1,5 +1,6 @@
 import express from 'express';
 import jwt from 'jsonwebtoken';
+import authMiddleware from './middlewares/authMiddleware.js';
 
 const PORT = 3000;
 const app = express();
@@ -9,14 +10,16 @@ app.use(express.static('/home/vihaan/Desktop/Projects/linkedIn-Clone/frontend'))
 
 const users = []
 
-app.get('/feed', (req, res) => {
-    res.send('Working!');
+app.get('/feed', authMiddleware, (req, res) => {
+    res.json({
+        message: "You are viewing your personal feed",
+        user: req.username
+    });
 })
 
 app.get('/', (req, res) => {
-    res.json({
-        message: "App working!"
-    })
+    res.sendFile('/home/vihaan/Desktop/Projects/linkedIn-Clone/frontend/index.html');
+
 })
 
 app.get('/signup', (req, res) => {
@@ -55,7 +58,7 @@ app.post('/signin', (req, res) => {
     const validUserExists = users.find(user => user.username === username && user.password === password);
 
     if (!validUserExists) {
-        res.status(403).json({
+        res.status(201).json({
             message: "Invalid Credentials. User Not found"
         })
         return;
