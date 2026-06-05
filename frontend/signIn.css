@@ -1,0 +1,288 @@
+/* =============================================
+   LinkedIn Sign In Page — signin.css
+   ============================================= */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+        Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+    background-color: #ffffff;
+    color: #000000e6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ── Header ── */
+header {
+    padding: 16px 24px;
+    background-color: #ffffff;
+}
+
+header img {
+    height: 34px;
+    width: auto;
+    display: block;
+}
+
+/* ── Main ── */
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 16px 48px;
+}
+
+/* ── Card ── */
+.signInForm {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+    padding: 32px 32px 36px;
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ── Title ── */
+.signInForm h1 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #000000e6;
+    margin-bottom: 24px;
+    line-height: 1.2;
+}
+
+/* ── Input fields ── */
+.field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+    position: relative;
+}
+
+.field input {
+    width: 100%;
+    height: 52px;
+    padding: 16px 14px 0;
+    /* top padding pushes text down; placeholder floats up */
+    border: 1px solid #a0a0a0;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #000000e6;
+    outline: none;
+    transition: border-color 0.15s ease;
+    background: transparent;
+}
+
+.field input:focus {
+    border-color: #0a66c2;
+    box-shadow: 0 0 0 1px #0a66c2;
+}
+
+/* Floating placeholder label */
+.field label {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #00000099;
+    pointer-events: none;
+    transition: top 0.15s ease, font-size 0.15s ease, color 0.15s ease;
+}
+
+.field input:focus+label,
+.field input:not(:placeholder-shown)+label {
+    top: 10px;
+    font-size: 11px;
+    color: #0a66c2;
+    transform: none;
+}
+
+/* Show/Hide toggle for password */
+.field .toggle-pw {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    color: #0a66c2;
+    cursor: pointer;
+    padding: 0;
+    font-family: inherit;
+}
+
+.field .toggle-pw:hover {
+    text-decoration: underline;
+}
+
+/* ── Forgot password ── */
+.forgot-link {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #0a66c2;
+    text-decoration: none;
+    margin-bottom: 16px;
+}
+
+.forgot-link:hover {
+    text-decoration: underline;
+}
+
+/* ── Keep me logged in row ── */
+.remember-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.remember-row input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    cursor: pointer;
+    accent-color: #0a66c2;
+    margin: 0;
+}
+
+.remember-row label {
+    font-size: 14px;
+    color: #000000e6;
+    cursor: pointer;
+    line-height: 1;
+    margin: 0;
+}
+
+/* ── Sign in button ── */
+.btn-signin {
+    width: 100%;
+    height: 52px;
+    background-color: #0a66c2;
+    color: #ffffff;
+    border: none;
+    border-radius: 28px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+.btn-signin:hover {
+    background-color: #004182;
+}
+
+/* ── "New to LinkedIn?" ── */
+.join-link {
+    margin-top: 24px;
+    font-size: 16px;
+    color: #000000b3;
+    text-align: center;
+}
+
+.join-link a {
+    color: #0a66c2;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.join-link a:hover {
+    text-decoration: underline;
+}
+
+/* ── Footer ── */
+footer {
+    background-color: #ffffff;
+    padding: 20px 24px 32px;
+}
+
+.footer-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 18px;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.footer-logo .li-logo {
+    height: 20px;
+    width: auto;
+}
+
+.footer-logo .copyright {
+    font-size: 13px;
+    color: #00000099;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 18px;
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li a,
+.footer-links li .lang-btn {
+    font-size: 13px;
+    color: #00000099;
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    transition: color 0.15s ease;
+}
+
+.footer-links li a:hover,
+.footer-links li .lang-btn:hover {
+    color: #0a66c2;
+    text-decoration: underline;
+}
+
+.footer-links li .lang-btn svg {
+    width: 10px;
+    height: 10px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+    .signInForm {
+        box-shadow: none;
+        padding: 24px 20px;
+    }
+
+    .signInForm h1 {
+        font-size: 22px;
+    }
+
+    .footer-inner {
+        gap: 6px 12px;
+    }
+}

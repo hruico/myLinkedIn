@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In | LinkedIn</title>
+    <link rel="stylesheet" href="./signIn.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        async function signIn() {
+
+            const username = document.getElementById('email').value
+            const password = document.getElementById('password').value
+
+            const resp = await axios.post('/signin', { username, password });
+
+            const token = resp.data.token;
+            window.localStorage.setItem('token', token);
+            window.location = '/'
+        }
+    </script>
+</head>
+
+<body>
+
+    <header>
+        <img src="./assets/LI-Logo.png" alt="LinkedIn">
+    </header>
+
+    <main>
+        <div class="signInForm">
+
+            <h1>Sign in</h1>
+
+            <!-- Email field with floating label -->
+            <div class="field">
+                <input type="text" id="email" placeholder=" " autocomplete="email">
+                <label for="email">Email or phone</label>
+            </div>
+
+            <!-- Password field with floating label + Show toggle -->
+            <div class="field">
+                <input type="password" id="password" placeholder=" " autocomplete="current-password">
+                <label for="password">Password</label>
+                <button class="toggle-pw" type="button" onclick="
+                          const inp = document.getElementById('password');
+                          inp.type = inp.type === 'password' ? 'text' : 'password';
+                          this.textContent = inp.type === 'password' ? 'Show' : 'Hide';
+                        ">Show</button>
+            </div>
+
+            <!-- Forgot password -->
+            <a href="#" class="forgot-link">Forgot password?</a>
+
+            <!-- Keep me logged in -->
+            <div class="remember-row">
+                <input type="checkbox" id="keep-logged" name="keep-logged" checked>
+                <label for="keep-logged">Keep me logged in</label>
+            </div>
+
+            <!-- CTA -->
+            <button class="btn-signin" type="button" onclick="signIn()">Sign in</button>
+
+        </div><!-- /.signInForm -->
+
+        <!-- Join prompt (outside card) -->
+        <p class="join-link">New to LinkedIn? <a href="/signup">Join now</a></p>
+
+    </main>
+
+    <!-- ── Footer ── -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-logo">
+                <img class="li-logo" src="./assets/LI-Logo.png" alt="LinkedIn">
+                <span class="copyright">© 2026</span>
+            </div>
+            <ul class="footer-links">
+                <li><a href="#">User Agreement</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Community Guidelines</a></li>
+                <li><a href="#">Cookie Policy</a></li>
+                <li><a href="#">Copyright Policy</a></li>
+                <li><a href="#">Send Feedback</a></li>
+                <li>
+                    <button class="lang-btn" type="button">
+                        Language
+                        <svg viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </footer>
+
+</body>
+
+</html>
